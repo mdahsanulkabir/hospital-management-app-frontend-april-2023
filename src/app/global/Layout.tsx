@@ -1,10 +1,11 @@
 import { Box } from '@mui/material'
-import TopBar from '../../components/TopBar';
-import AppSideBar from '../../components/SideBar';
+import TopBar from '../../components/Topbar';
+import AppSideBar from '../../components/Sidebar';
 import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
 
+    
 
     return (
 

@@ -12,7 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Card, CardActions, CardContent, CardMedia, Checkbox, FormControlLabel, FormLabel, Grid, Link, Paper, TextField } from '@mui/material';
+import { Card, CardContent, Checkbox, FormControlLabel, Grid, Link, Paper, TextField } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -177,16 +178,16 @@ const Login = () => {
                             <Grid item xs={12}>
                                 <TextField fullWidth label="Password" variant="outlined" type='password'/>
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={12}>
                             <FormControlLabel control={<Checkbox />} label="Rember Me" />
                             </Grid>
-                            <Grid item xs={4} alignSelf='baseline'>
-                                <Link underline='none' ><Typography>Forgot Password</Typography></Link>
+                            <Grid item xs={4}>
+                                <Button  variant="contained" sx={{width: '8rem'}} endIcon={<LoginIcon />}>Login</Button>
+                            </Grid>
+                            <Grid item xs={5} alignSelf='center'>
+                                <Link href='#' underline='none' >Forgot Password ?</Link>
                             </Grid>
                             
-                            <Grid item xs={12}>
-                                <Button  variant="contained" >Login</Button>
-                            </Grid>
                         </Grid>
                     </form>
                 </CardContent>
