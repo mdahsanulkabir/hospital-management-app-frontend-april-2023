@@ -2,8 +2,16 @@ import  {
     ProSidebarProvider,
     Sidebar, Menu, MenuItem, SubMenu, useProSidebar, sidebarClasses, menuClasses
 }  from 'react-pro-sidebar'
+import CircleIcon from '@mui/icons-material/Circle';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import { Item } from './Item';
+import { useState } from 'react';
+
+
 
 const MySidebar = () => {
+    const [ isCollapsed, setIsCollapsed ] = useState(false)
+    const [selected, setSelected] = useState("Dashboard");
     return (
         <ProSidebarProvider>
             <Sidebar
@@ -19,10 +27,18 @@ const MySidebar = () => {
                     [`.${menuClasses.menuItemRoot}:hover`]:{
                         color: 'red',
                     },
+                    [`.${menuClasses.active}`]:{
+                        color: 'orange',
+                    },
                   }}
             >
-                <Menu color='#3699ff'>
-                    <MenuItem> Dashboard </MenuItem>
+                <Menu>
+                    <Item 
+                        title='Dashboard' 
+                        to="" 
+                        icon={<DashboardIcon />} 
+                        selected={selected} 
+                        setSelected={setSelected}/>
                     <SubMenu label="Outdoor Invoice">
                         <MenuItem> New Invoice </MenuItem>
                         <MenuItem> All Invoice </MenuItem>
