@@ -14,14 +14,14 @@ const Topbar = () => {
         setAnchorEl(null);
     };
     return (
-        <Box pr={1}>
+        <Box >
             <Paper elevation={2} sx={{display: 'flex', p:'1rem', height: '75px', justifyContent: 'space-between'}}>
-                <TextField 
+                <TextField placeholder='Search...'
                     sx={{width: { xs: '150px', lg: '200px' }, 
                         "& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root": {height: '40px'}
                     }} />
                     
-                <IconButton color="primary" aria-label="add to shopping cart" onClick={handleClick}>
+                <IconButton color="primary" aria-label="add to shopping cart" onClick={handleClick} >
                     <PersonIcon fontSize='large' />
                 </IconButton>
                 <Menu

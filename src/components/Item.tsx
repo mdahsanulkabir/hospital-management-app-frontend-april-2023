@@ -18,7 +18,7 @@ export const Item = ({ title, to, icon, selected, setSelected }: ItemProps) => {
         icon={icon}
         component={<Link to={to} />}
       >
-        <Typography>{title}</Typography>
+        {title}
         
       </MenuItem>
     );

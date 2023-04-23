@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Dashboard = () => {
+const Loan = () => {
     return (
         <div>
-            sdfsfsdf
+            loan
         </div>
     );
 };
 
-export default Dashboard;
+export default Loan;

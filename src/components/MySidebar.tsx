@@ -25,23 +25,43 @@ const MySidebar = () => {
                         color: '#3699ff',
                     },
                     [`.${menuClasses.menuItemRoot}:hover`]:{
-                        color: 'red',
+                        // fontSize: '1.5em',
                     },
                     [`.${menuClasses.active}`]:{
                         color: 'orange',
+                    },
+                    [`.${menuClasses.subMenuContent}`]:{
+                        // color: 'cyan',
+                        background:'inherit',
+                        marginLeft:'15px',
+                        
+                    },
+                    [`.${menuClasses.subMenuContent}::before`]:{
+                        
+
                     },
                   }}
             >
                 <Menu>
                     <Item 
                         title='Dashboard' 
-                        to="" 
-                        icon={<DashboardIcon />} 
+                        to="/" 
+                        icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                         selected={selected} 
                         setSelected={setSelected}/>
-                    <SubMenu label="Outdoor Invoice">
-                        <MenuItem> New Invoice </MenuItem>
-                        <MenuItem> All Invoice </MenuItem>
+                    <SubMenu label="Outdoor Invoice" icon={<i className="bi bi-receipt"></i>} >
+                        <Item 
+                            title='New Invoice' 
+                            to="/invoice/create" 
+                            icon={<i className="bi bi-receipt"></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Invoice' 
+                            to="/invoice" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="IPD Admission">
                         <MenuItem> New Admission </MenuItem>
