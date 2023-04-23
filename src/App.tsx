@@ -1,16 +1,15 @@
-import  { ProSidebarProvider }  from 'react-pro-sidebar'
+import { Routes, Route } from 'react-router-dom'
+import Login from './app/global/Login'
 
 function App() {
 
 
   return (
-    <div>
-      <h1>Hello HMS</h1>
-      <ProSidebarProvider>
-
-        <h1>Hi</h1>
-      </ProSidebarProvider>
-    </div>
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      
+      
+    </Routes>
   )
 }
 
