@@ -1,16 +1,15 @@
 import { Box } from '@mui/material'
 import TopBar from '../../components/Topbar';
-import AppSideBar from '../../components/Sidebar';
 import { Outlet } from 'react-router-dom';
+import MySidebar from '../../components/MySidebar';
 
 const Layout = () => {
 
-    
 
     return (
 
             <Box sx={{display:'flex', width:'100%', height:'100vh'}}>
-                <AppSideBar />
+                <MySidebar />
                 <Box sx={{display:'flex', flexDirection:'column', width:'100%', height:'100vh', overflowY:"scroll",maxHeight:'100vh'}}>
                     <TopBar/>
                     <Outlet />
