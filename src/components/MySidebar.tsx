@@ -23,6 +23,7 @@ const MySidebar = () => {
                     },
                     [`.${menuClasses.root}`]:{
                         color: '#3699ff',
+                        
                     },
                     [`.${menuClasses.menuItemRoot}:hover`]:{
                         // fontSize: '1.5em',

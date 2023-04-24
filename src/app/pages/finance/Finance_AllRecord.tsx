@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Fiannce_AllRecord = () => {
+const Finance_AllRecord = () => {
     return (
         <div>
             <h1>Finance all record</h1>
@@ -8,4 +8,4 @@ const Fiannce_AllRecord = () => {
     );
 };
 
-export default Fiannce_AllRecord;
+export default Finance_AllRecord;
