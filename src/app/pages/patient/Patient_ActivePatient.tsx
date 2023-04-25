@@ -1,10 +1,16 @@
+import { Card } from '@mui/material';
 import React from 'react';
+import CustomCardHeader from '../../../components/CustomCardHeader';
 
 const Patient_ActivePatient = () => {
     return (
-        <div>
-            <h1>PATIENT ACTIVE PATIENT</h1>
-        </div>
+        <Card>
+            <CustomCardHeader
+                title="New Patient"
+                subheader="Create New Patient"
+                navigationlink="/patient/create"
+            />
+        </Card>
     );
 };
 
