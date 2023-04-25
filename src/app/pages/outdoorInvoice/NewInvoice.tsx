@@ -1,10 +1,18 @@
-import React from 'react';
+import { Card, CardContent } from "@mui/material";
+import CustomCardHeader from "../../../components/CustomCardHeader";
 
 const NewInvoice = () => {
     return (
-        <div>
-            <h1>New Outdoor invoice</h1>
-        </div>
+        <Card>
+            <CustomCardHeader
+                title="New Invoice"
+                subheader="Create New Invoice"
+                // navigationlink="hello"
+            />
+            <CardContent>
+            
+            </CardContent>
+        </Card>
     );
 };
 
