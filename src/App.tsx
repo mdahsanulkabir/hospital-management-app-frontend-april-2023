@@ -157,7 +157,6 @@ function App() {
         <Route path='invoice/report' element={<ReportManagement />} />
         <Route path='report/ipd' element={<IPDReport />} />
         <Route path='report/outdoor' element={<OutdoorReport />} />
-        <Route path='report/outdoor' element={<OutdoorReport />} />
         <Route path='report/pharmacy' element={<PharmacyReport />} />
         <Route path='report/pharmacy-inventory' element={<PharmacyInventoryReport />} />
         <Route path='report/appointment' element={<AppointmentReport />} />
@@ -176,6 +175,7 @@ function App() {
         <Route path='user/pending' element={<PendingUser />} />
         <Route path='user/banned' element={<BannedUser />} />
         <Route path='user' element={<AllUser />} />
+        
         <Route path='employee' element={<Employees />} />
         {/* <Route path='employee/create' element={<Employees />} />  //create employee */}
         <Route path='attendance/today' element={<Attendance />} />

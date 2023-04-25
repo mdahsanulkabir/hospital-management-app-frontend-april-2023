@@ -9,9 +9,12 @@ import { useState } from 'react';
 
 
 
+
+
 const MySidebar = () => {
     const [ isCollapsed, setIsCollapsed ] = useState(false)
     const [selected, setSelected] = useState("Dashboard");
+    const [ subMenuOpenStatus, setSubMenuOpenStatus ] = useState("")
     return (
         <ProSidebarProvider>
             <Sidebar
@@ -19,11 +22,10 @@ const MySidebar = () => {
                 defaultCollapsed={false}
                 rootStyles={{
                     [`.${sidebarClasses.container}`]: {
-                      backgroundColor: '#052fac',
+                        backgroundColor: '#052fac',
                     },
                     [`.${menuClasses.root}`]:{
                         color: '#3699ff',
-                        
                     },
                     [`.${menuClasses.menuItemRoot}:hover`]:{
                         // fontSize: '1.5em',
@@ -37,11 +39,7 @@ const MySidebar = () => {
                         marginLeft:'15px',
                         
                     },
-                    [`.${menuClasses.subMenuContent}::before`]:{
-                        
-
-                    },
-                  }}
+                }}
             >
                 <Menu>
                     <Item 
@@ -50,7 +48,7 @@ const MySidebar = () => {
                         icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                         selected={selected} 
                         setSelected={setSelected}/>
-                    <SubMenu label="Outdoor Invoice" icon={<i className="bi bi-receipt"></i>} >
+                    <SubMenu label="Outdoor Invoice" open={(subMenuOpenStatus === "Outdoor Invoice")} icon={<i className="bi bi-receipt"></i>} onClick={()=>setSubMenuOpenStatus("Outdoor Invoice")}>
                         <Item 
                             title='New Invoice' 
                             to="/invoice/create" 
@@ -64,135 +62,567 @@ const MySidebar = () => {
                             selected={selected} 
                             setSelected={setSelected}/>
                     </SubMenu>
-                    <SubMenu label="IPD Admission">
-                        <MenuItem> New Admission </MenuItem>
-                        <MenuItem> Draft Admission </MenuItem>
-                        <MenuItem> Final Admission </MenuItem>
-                        <MenuItem> All Admission </MenuItem>
+                    <SubMenu label="IPD Admission" open={(subMenuOpenStatus === "IPD Admission")} onClick={()=>setSubMenuOpenStatus("IPD Admission")}>
+                        <Item 
+                            title='New Admission' 
+                            to="/admission/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Draft Admission' 
+                            to="/admission/draft" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Final Admission' 
+                            to="/admission/final" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Admission' 
+                            to="/admission" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Finance">
-                        <MenuItem> New Income </MenuItem>
-                        <MenuItem> New Expense </MenuItem>
-                        <MenuItem> IPD Income </MenuItem>
-                        <MenuItem> Outdoor Income </MenuItem>
-                        <MenuItem> Pharmacy Income </MenuItem>
-                        <MenuItem> IPD Expense </MenuItem>
-                        <MenuItem> Outdoor Expense </MenuItem>
-                        <MenuItem> Pharmacy Expense </MenuItem>
-                        <MenuItem> All Income </MenuItem>
-                        <MenuItem> All Expense </MenuItem>
-                        <MenuItem> All Record </MenuItem>
+                        <Item 
+                            title='New Income' 
+                            to="/finance/create/income" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='New Expense' 
+                            to="/finance/create/expense" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='IPD Income' 
+                            to="/finance/ipd-income" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Outdoor Income' 
+                            to="/finance/opd-income" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Pharmacy Income' 
+                            to="/finance/pharmacy-income" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='IPD Expense' 
+                            to="/finance/ipd-expense" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Outdoor Expense' 
+                            to="/finance/opd-expense" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Pharmacy Expense' 
+                            to="/finance/pharmacy-expense" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Income' 
+                            to="/finance/all-income" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Expense' 
+                            to="/finance/all-expense" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Record' 
+                            to="/finance" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Patient">
-                        <MenuItem> New Patient </MenuItem>
-                        <MenuItem> Active Patient </MenuItem>
-                        <MenuItem> Banned Patient </MenuItem>
-                        <MenuItem> All Patient </MenuItem>
+                        <Item 
+                            title='New Patient' 
+                            to="/patient/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Active Patient' 
+                            to="/patient/active" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Banned Patient' 
+                            to="/patient/banned" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Patient' 
+                            to="/patient" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Investigation">
-                        <MenuItem> New Investigation </MenuItem>
-                        <MenuItem> All Investigation </MenuItem>
-                        <MenuItem> Equipment </MenuItem>
+                        <Item 
+                            title='New Investigation' 
+                            to="/investigation/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Investigation' 
+                            to="/investigation" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Equipment' 
+                            to="/equipment" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="IPD Service">
-                        <MenuItem> New Service </MenuItem>
-                        <MenuItem> All IPD Service </MenuItem>
-                        <MenuItem> IPD Service Type </MenuItem>
+                        <Item 
+                            title='New Service' 
+                            to="/service/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All IPD Service' 
+                            to="/service" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='IPD Service Type' 
+                            to="/service-type" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Seat">
-                        <MenuItem> New Seat </MenuItem>
-                        <MenuItem> All Seat </MenuItem>
+                        <Item 
+                            title='New Seat' 
+                            to="/seat/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Seat' 
+                            to="/seat" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Investigation Package">
-                        <MenuItem> New Package </MenuItem>
-                        <MenuItem> All Package </MenuItem>
+                        <Item 
+                            title='New Package' 
+                            to="/investigation/package" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Package' 
+                            to="/investigation" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Appointment">
-                        <MenuItem> New Appointment </MenuItem>
-                        <MenuItem> All Appointment </MenuItem>
+                        <Item 
+                            title='New Appointment' 
+                            to="/appointment/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Appointment' 
+                            to="/appointment" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Doctor">
-                        <MenuItem> New Doctor </MenuItem>
-                        <MenuItem> Active Doctor </MenuItem>
-                        <MenuItem> Inactive Doctor </MenuItem>
-                        <MenuItem> All Doctor </MenuItem>
+                        <Item 
+                            title='New Doctor' 
+                            to="/doctor/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Active Doctor' 
+                            to="/doctor/active" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Inactive Doctor' 
+                            to="/doctor/inactive" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Doctor' 
+                            to="/doctor" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Prescription">
-                        <MenuItem> New Prescription </MenuItem>
-                        <MenuItem> All Prescription </MenuItem>
+                        <Item 
+                            title='New Prescription' 
+                            to="/prescription/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Prescription' 
+                            to="/prescription" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Department">
-                        <MenuItem> New Department </MenuItem>
-                        <MenuItem> All Department </MenuItem>
+                        <Item 
+                            title='New Department' 
+                            to="/department/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Department' 
+                            to="/department" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Pharmacy">
-                        <MenuItem> New Pharmacy </MenuItem>
-                        <MenuItem> All Pharmacy </MenuItem>
+                        <Item 
+                            title='New Pharmacy' 
+                            to="/pharmacy/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Pharmacy' 
+                            to="/pharmacy" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Pharmacy Inventory">
-                        <MenuItem> New Pharmacy Inventory </MenuItem>
-                        <MenuItem> All Pharmacy Inventory </MenuItem>
+                        <Item 
+                            title='New Pharmacy Inventory' 
+                            to="/pharmacy-inventory/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Pharmacy Inventory' 
+                            to="/pharmacy-inventory" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Pharmacy Purchase">
-                        <MenuItem> New Pharmacy Purchase </MenuItem>
-                        <MenuItem> All Pharmacy Purchase </MenuItem>
+                        <Item 
+                            title='New Pharmacy Purchase' 
+                            to="/pharmacy-purchase/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Pharmacy Purchase' 
+                            to="/pharmacy-purchase" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Pharmacy Vendor">
-                        <MenuItem> New Pharmacy Vendor </MenuItem>
-                        <MenuItem> All Pharmacy Vendor </MenuItem>
+                        <Item 
+                            title='New Pharmacy Vendor' 
+                            to="/pharmacy-vendor/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Pharmacy Vendor' 
+                            to="/pharmacy-vendor" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Pharmacy Invoice">
-                        <MenuItem> New Pharmacy Invoice </MenuItem>
-                        <MenuItem> All Pharmacy Invoice </MenuItem>
+                        <Item 
+                            title='New Pharmacy Invoice' 
+                            to="/pharmacy-invoice/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Pharmacy Invoice' 
+                            to="/pharmacy-invoice" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Drug">
-                        <MenuItem> New Drug </MenuItem>
-                        <MenuItem> All Drug </MenuItem>
+                        <Item 
+                            title='New Drug' 
+                            to="/drug/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Drug' 
+                            to="/drug" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Notice">
-                        <MenuItem> New Notice </MenuItem>
-                        <MenuItem> All Notice </MenuItem>
+                        <Item 
+                            title='New Notice' 
+                            to="/notice/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All Notice' 
+                            to="/notice" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
-                    <MenuItem>Sample Collection</MenuItem>
-                    <MenuItem>Report Management</MenuItem>
+                    {/* <MenuItem>Sample Collection</MenuItem> */}
+                        <Item 
+                            title='Sample Collection' 
+                            to="/invoice/sample-collection" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                    {/* <MenuItem>Report Management</MenuItem> */}
+                        <Item 
+                            title='Report Management' 
+                            to="/invoice/report" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     <SubMenu label="Report">
-                        <MenuItem> IPD Report </MenuItem>
-                        <MenuItem> Outdoor Report </MenuItem>
-                        <MenuItem> Pharmacy Report </MenuItem>
-                        <MenuItem> P. Inventory Report </MenuItem>
-                        <MenuItem> Appointment Report </MenuItem>
-                        <MenuItem> Referral Report </MenuItem>
-                        <MenuItem> Investigation (inv) Report </MenuItem>
-                        <MenuItem> Investigation (status) Report </MenuItem>
-                        <MenuItem> Investigation (ref.) Report </MenuItem>
-                        <MenuItem> Admissions by Doctor Report </MenuItem>
-                        <MenuItem> Income Report </MenuItem>
-                        <MenuItem> Expense Report </MenuItem>
-                        <MenuItem> Overview Report </MenuItem>
-                        <MenuItem> Growth Report </MenuItem>
-                        <MenuItem> Profit/Loss Report </MenuItem>
+                        <Item 
+                            title='IPD Report' 
+                            to="/report/ipd" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Outdoor Report' 
+                            to="/report/outdoor" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Pharmacy Report' 
+                            to="/report/pharmacy" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='P. Inventory Report' 
+                            to="/report/pharmacy-inventory" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Appointment Report' 
+                            to="/report/appointment" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Referral Report' 
+                            to="/report/referral" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Investigation (inv) Report' 
+                            to="/report/investigation-invoice-wise" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Investigation (status) Report' 
+                            to="/report/investigation-status-wise" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Investigation (ref.) Report' 
+                            to="/report/investigation-referral" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Admissions by Doctor Report' 
+                            to="/report/admission-by-doctor" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Income Report' 
+                            to="/report/income" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Expense Report' 
+                            to="/report/expense" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Overview Report' 
+                            to="/report/overview" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Growth Report' 
+                            to="/report/growth" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Profit/Loss Report' 
+                            to="/report/profit-loss" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="User">
-                        <MenuItem> New User </MenuItem>
-                        <MenuItem> Active User </MenuItem>
-                        <MenuItem> Pending User </MenuItem>
-                        <MenuItem> Banned User </MenuItem>
-                        <MenuItem> All User </MenuItem>
+                        <Item 
+                            title='New User' 
+                            to="/user/create" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Active User' 
+                            to="/user/active" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Pending User' 
+                            to="/user/pending" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Banned User' 
+                            to="/user/banned" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='All User' 
+                            to="/user/" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Human Resources">
-                        <MenuItem> Employees </MenuItem>
-                        <MenuItem> Attendance </MenuItem>
-                        <MenuItem> Leave </MenuItem>
-                        <MenuItem> Shift </MenuItem>
-                        <MenuItem> Loan </MenuItem>
-                        <MenuItem> Pay Grade </MenuItem>
-                        <MenuItem> Payroll </MenuItem>
-                        <MenuItem> Holidays </MenuItem>
+                        <Item 
+                            title='Employees' 
+                            to="/employee" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Attendance' 
+                            to="/attendance/today" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Leave' 
+                            to="/hrleave" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Shift' 
+                            to="/shift" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Loan' 
+                            to="/hrloan" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Pay' 
+                            to="/paygrade" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Payroll' 
+                            to="/payroll" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Holidays' 
+                            to="/holiday" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="Setting">
-                        <MenuItem> Hospital Setting </MenuItem>
-                        <MenuItem> IPD/Indoor Setting </MenuItem>
-                        <MenuItem> Outdoor Setting </MenuItem>
+                        <Item 
+                            title='Hospital Setting' 
+                            to="/setting" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='IPD/Indoor Setting' 
+                            to="/setting" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
+                        <Item 
+                            title='Outdoor Setting' 
+                            to="/setting" 
+                            icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
+                            selected={selected} 
+                            setSelected={setSelected}/>
                     </SubMenu>
                     <SubMenu label="System">
                         <MenuItem> Backup </MenuItem>
