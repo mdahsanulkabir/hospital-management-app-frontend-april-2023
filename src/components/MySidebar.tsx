@@ -7,8 +7,27 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Item } from './Item';
 import { useState } from 'react';
 
+type SubMenuCompProps = {
+    label : string
+    subMenuOpenStatus: string
+    setSubMenuOpenStatus : React.Dispatch<React.SetStateAction<string>>
+    icon: React.ReactNode
+    children: React.ReactNode
+}
 
-
+const SubMenuComp = ({ label, subMenuOpenStatus, setSubMenuOpenStatus, icon, children } : SubMenuCompProps) => {
+    
+    return (
+        <SubMenu
+            label = {label}
+            open={subMenuOpenStatus === label}
+            icon={icon}
+            onClick={() => setSubMenuOpenStatus(label)}
+        >
+            {children}
+        </SubMenu>
+    )
+}
 
 
 const MySidebar = () => {
@@ -48,7 +67,13 @@ const MySidebar = () => {
                         icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                         selected={selected} 
                         setSelected={setSelected}/>
-                    <SubMenu label="Outdoor Invoice" open={(subMenuOpenStatus === "Outdoor Invoice")} icon={<i className="bi bi-receipt"></i>} onClick={()=>setSubMenuOpenStatus("Outdoor Invoice")}>
+                    {/* <SubMenu label="Outdoor Invoice" open={(subMenuOpenStatus === "Outdoor Invoice")} icon={<i className="bi bi-receipt"></i>} onClick={(subMenuOpenStatus)=> (subMenuOpenStatus === "Outdoor Invoice") ? setSubMenuOpenStatus("Outdoor Invoice")}> */}
+                    <SubMenuComp 
+                        label="Outdoor Invoice" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Invoice' 
                             to="/invoice/create" 
@@ -61,8 +86,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="IPD Admission" open={(subMenuOpenStatus === "IPD Admission")} onClick={()=>setSubMenuOpenStatus("IPD Admission")}>
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="IPD Admission" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Admission' 
                             to="/admission/create" 
@@ -87,8 +117,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Finance">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Finance" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Income' 
                             to="/finance/create/income" 
@@ -155,8 +190,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Patient">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Patient" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Patient' 
                             to="/patient/create" 
@@ -181,8 +221,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Investigation">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Investigation" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Investigation' 
                             to="/investigation/create" 
@@ -201,8 +246,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="IPD Service">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="IPD Service" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Service' 
                             to="/service/create" 
@@ -221,8 +271,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Seat">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Seat" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Seat' 
                             to="/seat/create" 
@@ -235,8 +290,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Investigation Package">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Investigation Package" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Package' 
                             to="/investigation/package" 
@@ -249,8 +309,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Appointment">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Appointment" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Appointment' 
                             to="/appointment/create" 
@@ -263,8 +328,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Doctor">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Doctor" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Doctor' 
                             to="/doctor/create" 
@@ -289,8 +359,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Prescription">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Prescription" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Prescription' 
                             to="/prescription/create" 
@@ -303,8 +378,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Department">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Department" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Department' 
                             to="/department/create" 
@@ -317,8 +397,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Pharmacy">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Pharmacy" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Pharmacy' 
                             to="/pharmacy/create" 
@@ -331,8 +416,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Pharmacy Inventory">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Pharmacy Inventory" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Pharmacy Inventory' 
                             to="/pharmacy-inventory/create" 
@@ -345,8 +435,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Pharmacy Purchase">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Pharmacy Purchase" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Pharmacy Purchase' 
                             to="/pharmacy-purchase/create" 
@@ -359,8 +454,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Pharmacy Vendor">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Pharmacy Vendor" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Pharmacy Vendor' 
                             to="/pharmacy-vendor/create" 
@@ -373,8 +473,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Pharmacy Invoice">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Pharmacy Invoice" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Pharmacy Invoice' 
                             to="/pharmacy-invoice/create" 
@@ -387,8 +492,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Drug">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Drug" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Drug' 
                             to="/drug/create" 
@@ -401,8 +511,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Notice">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Notice" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New Notice' 
                             to="/notice/create" 
@@ -415,7 +530,7 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
+                    </SubMenuComp>
                     {/* <MenuItem>Sample Collection</MenuItem> */}
                         <Item 
                             title='Sample Collection' 
@@ -430,7 +545,12 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    <SubMenu label="Report">
+                    <SubMenuComp 
+                        label="Report" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='IPD Report' 
                             to="/report/ipd" 
@@ -521,8 +641,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="User">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Finance" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='New User' 
                             to="/user/create" 
@@ -553,8 +678,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Human Resources">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Human Resources" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='Employees' 
                             to="/employee" 
@@ -603,8 +733,13 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="Setting">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="Setting" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <Item 
                             title='Hospital Setting' 
                             to="/setting" 
@@ -623,13 +758,18 @@ const MySidebar = () => {
                             icon={<i className='bx bxs-tachometer bx-sm bx-tada-hover'></i>} 
                             selected={selected} 
                             setSelected={setSelected}/>
-                    </SubMenu>
-                    <SubMenu label="System">
+                    </SubMenuComp>
+                    <SubMenuComp 
+                        label="System" 
+                        icon={<i className="bi bi-receipt"></i>} 
+                        subMenuOpenStatus={subMenuOpenStatus} 
+                        setSubMenuOpenStatus = {setSubMenuOpenStatus}
+                    >
                         <MenuItem> Backup </MenuItem>
                         <MenuItem> Totem </MenuItem>
                         <MenuItem> Horizon </MenuItem>
                         <MenuItem> Logs </MenuItem>
-                    </SubMenu>
+                        </SubMenuComp>
                 </Menu>
 
             </Sidebar>
