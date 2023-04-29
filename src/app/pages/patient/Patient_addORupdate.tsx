@@ -315,11 +315,18 @@ const Patient_addORupdate = ({customHeaderTitle, customHeaderSub, submitButtonTe
                                 render={({field}) => 
                                     <TextField
                                         {...field}
+                                        select
                                         type="text"
                                         variant="outlined"
                                         label="Status"
                                         fullWidth
-                                    />
+                                    >
+                                        {['active', 'pending', 'banned'].map((option) => (
+                                            <option key={option} value={option}>
+                                            {option}
+                                            </option>
+                                        ))}
+                                    </TextField>
                                 }
                             />
                         </Grid>
