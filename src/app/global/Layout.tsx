@@ -2,6 +2,7 @@ import { Box, Paper, Typography } from '@mui/material'
 import TopBar from '../../components/Topbar';
 import { Outlet } from 'react-router-dom';
 import MySidebar from '../../components/MySidebar';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Layout = () => {
 
@@ -22,7 +23,7 @@ const Layout = () => {
                                 <Typography mr='10px'>Main Site</Typography>
                             </Box>
                             <Box>
-                                <p>Made with <span>by Bluedot Technology Ltd</span> </p>
+                                <p style={{display :'flex'}}>Made with <span>< FavoriteIcon color='error' sx={{fontSize:"15px", mx:'5px'}}/></span> <span>by Bluedot Technology Ltd</span> </p>
                             </Box>
                         </Box>
                     </Box>

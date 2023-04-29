@@ -88,6 +88,7 @@ import PayGrade from './app/pages/humanResources/PayGrade'
 import Payroll from './app/pages/humanResources/Payroll'
 import Holidays from './app/pages/humanResources/Holidays'
 import HospitalSetting from './app/pages/setting/HospitalSetting'
+import Patient_EditPatient from './app/pages/patient/Patient_EditPatient'
 
 function App() {
 
@@ -119,6 +120,7 @@ function App() {
         <Route path='patient/active' element={<Patient_ActivePatient />} />
         <Route path='patient/banned' element={<Patient_BannedPatient />} />
         <Route path='patient' element={<Patient_AllPatient />} />
+        <Route path='patient/edit/:sl' element={<Patient_EditPatient />} />
         <Route path='investigation/create' element={<NewInvestigation />} />
         <Route path='investigation' element={<AllInvestigation />} />
         <Route path='equipment' element={<Equipment />} />
@@ -175,7 +177,7 @@ function App() {
         <Route path='user/pending' element={<PendingUser />} />
         <Route path='user/banned' element={<BannedUser />} />
         <Route path='user' element={<AllUser />} />
-        
+
         <Route path='employee' element={<Employees />} />
         {/* <Route path='employee/create' element={<Employees />} />  //create employee */}
         <Route path='attendance/today' element={<Attendance />} />
