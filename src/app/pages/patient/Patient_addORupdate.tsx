@@ -322,9 +322,9 @@ const Patient_addORupdate = ({customHeaderTitle, customHeaderSub, submitButtonTe
                                         fullWidth
                                     >
                                         {['active', 'pending', 'banned'].map((option) => (
-                                            <option key={option} value={option}>
-                                            {option}
-                                            </option>
+                                            <MenuItem key={option} value={option}>
+                                                {option}
+                                            </MenuItem>
                                         ))}
                                     </TextField>
                                 }
