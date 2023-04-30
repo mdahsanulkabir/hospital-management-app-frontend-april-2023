@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-// import type { RootState } from '../../store'
+import type { RootState } from '../../store'
 
 // Define a type for the slice state
 interface PatientState {
@@ -152,6 +152,6 @@ export const patientSlice = createSlice({
 // export const {  } = userSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-// export const selectName = (state: RootState) => state.user.name
+export const selectPatient = (state: RootState) => state.patient
 
 export default patientSlice.reducer
