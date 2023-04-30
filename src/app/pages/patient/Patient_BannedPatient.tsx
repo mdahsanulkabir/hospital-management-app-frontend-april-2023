@@ -1,10 +1,16 @@
-import React from 'react';
+
+import CustomCardHeader from "../../../components/CustomCardHeader";
+import Patient_PatientDetails from "./Patient_PatientDetails";
 
 const Patient_BannedPatient = () => {
     return (
-        <div>
-            <h1>patient banned patient</h1>
-        </div>
+        <Patient_PatientDetails status='banned'>
+            <CustomCardHeader
+                title="Banned Patient"
+                subheader="List of Banned Patient"
+                navigationlink="/patient/banned"
+            />
+        </Patient_PatientDetails>
     );
 };
 

@@ -76,7 +76,7 @@ const initialState: PatientState[] =[
         specialNote : "bla bla bla",
         dob: new Date(),
         bloodGroup: 'A+',
-        status: "active"
+        status: "banned"
     },
     {
         id: 'CUS214569247119',
