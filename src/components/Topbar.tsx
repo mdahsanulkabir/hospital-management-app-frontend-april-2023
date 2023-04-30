@@ -14,7 +14,7 @@ const Topbar = () => {
         setAnchorEl(null);
     };
     return (
-        <Box >
+        <Box sx={{position: 'sticky', top: 0, zIndex: 10}}>
             <Paper elevation={2} sx={{display: 'flex', p:'1rem', height: '75px', justifyContent: 'space-between'}}>
                 <TextField placeholder='Search...'
                     sx={{width: { xs: '150px', lg: '200px' }, 
