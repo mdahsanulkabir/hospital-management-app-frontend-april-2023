@@ -17,7 +17,7 @@ type FormValues = {
     patientAddress : string
     patientSpecialnote: string
     patientDOB : Date
-    patientBloodGroup : string
+    patientBloodGroup? : string
     patientGuardianName: string
     patientGuardianMobilePhone: number
     patientGuardianNID: string
