@@ -1,3 +1,5 @@
+import { Button, Card, CardContent, Grid, TextField } from "@mui/material";
+import CustomCardHeader from "../../../components/CustomCardHeader";
 import { selectPatient } from "../../../redux/features/patient/patientSlice";
 import { useAppSelector } from "../../../redux/hooks";
 
@@ -7,9 +9,16 @@ const Patient_AllPatient = () => {
     
     console.log(allPatientDetails)
     return (
-        <div>
-            <h1>Patient all patient</h1>
-        </div>
+        <Card>
+            <CustomCardHeader
+                title={"All Patient"}
+                subheader={"List of All Patient"}
+                navigationlink="/patient/create"
+            />
+            <CardContent>
+                dfghdfghdfgh
+            </CardContent>
+        </Card>
     );
 };
 
