@@ -11,8 +11,8 @@ const Layout = () => {
 
             <Box sx={{display:'flex', width:'100%', height:'100vh'}}>
                 <MySidebar />
-                <Box sx={{display:'flex', flexDirection:'column', width:'100%', height:'100vh', overflowY:"scroll",maxHeight:'100vh', background:'#eaf1f7'}}>
-                    <TopBar/>
+                <Box sx={{display:'flex', flexDirection:'column', width:'100%', height:'100vh', overflowY:"scroll",maxHeight:'100vh', background:'#eaf1f7',}}>
+                    <TopBar />
                     <Box sx={{mt: '1.5rem', px:'15px', pb:'25px'}}>
                         <Outlet />
                     </Box>
